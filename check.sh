@@ -1,6 +1,9 @@
 IS_MACOS=$(uname -a | awk '{ print $1 }' | grep -c Darwin)
 IS_WINDOWS=$(which cmd.exe | grep -c "cmd.exe")
-IS_UBUNTU=$(lsb_release -s -i | grep -c "Ubuntu")
+LSB_RELEASE=$(which lsb_release)
+if [ -n $LSB_RELEASE ]; then
+    IS_UBUNTU=$(lsb_release -s -i | grep -c "Ubuntu")
+fi
 
 if [ $IS_MACOS = 1 ]; then
     sh ./helpers/macos-checker.sh
