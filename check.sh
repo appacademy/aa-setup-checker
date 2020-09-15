@@ -1,6 +1,6 @@
 IS_MACOS=$(uname -a | awk '{ print $1 }' | grep -c Darwin)
-IS_WINDOWS=$(which cmd.exe | grep -c "cmd.exe")
-LSB_RELEASE=$(which lsb_release)
+IS_WINDOWS=$(which cmd.exe | grep -c -v 'not found')
+LSB_RELEASE=$(which lsb_release | grep -c -v 'not found')
 if [ -n $LSB_RELEASE ]; then
     IS_UBUNTU=$(lsb_release -s -i | grep -c "Ubuntu")
 fi
