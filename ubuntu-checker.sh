@@ -20,6 +20,10 @@ sh ./helpers/code-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
+sh ./helpers/python-checker.sh
+if [ $? -eq 1 ]; then
+    exit 1
+fi
 
 echo "Ubuntu is OK"
 echo "---------------"
