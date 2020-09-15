@@ -1,38 +1,24 @@
 #!/bin/sh
-
 LTS_NODE_VERSION=12
 
-WSL=$(which wsl.exe)
-WSL_VERSION=$(wsl.exe -l -v | tr -d '\0' | grep Ubuntu | awk '{print $4}' | tr -d '\n\r')
 NODE=$(which node)
 NODE_IS_FROM_NVM=$(echo $NODE | grep -c ".nvm")
 NODE_VERSION=$(node --version)
 NODE_IS_LTS=$(echo $NODE_VERSION | grep -c $LTS_NODE_VERSION)
+NPM=$(which npm)
+NPM_VERSION=$(npm --version)
 MOCHA=$(which mocha)
+MOCHA_VERSION=$(mocha --version)
 MOCHA_IS_FROM_NVM=$(echo $MOCHA | grep -c ".nvm")
-DOCKER=$(which docker)
-DOCKER_VERSION=$(docker --version)
 
-echo "Configuration"
-echo "-------------"
-echo "WSL Version: $WSL_VERSION"
-echo "Shell: $SHELL"
-echo "Node Version: $NODE_VERSION"
-echo "Node Binary: $NODE"
-echo "Mocha Binary: $MOCHA"
-echo "Docker Version: $DOCKER_VERSION"
-echo "-------------"
-
-if [ -z "$WSL" ]; then
-    echo "WSL doesn't appear to be installed."
-    exit 1;
-fi
-
-if [ $WSL_VERSION != "2" ]; then
-    echo "WSL for Ubuntu is not version 2."
-    echo "Please run 'wsl --set-version Ubuntu 2' from Powershell"
-    exit 1;
-fi
+echo "Checking Node.JS"
+echo "================"
+echo "Node Binary: ${NODE}"
+echo "Node Version: ${NODE_VERSION}"
+echo "NPM Binary: ${NPM}"
+echo "NPM Version: ${NPM_VERSION}"
+echo "Mocha Binary: ${MOCHA}"
+echo "Mocha Version: ${MOCHA_VERSION}"
 
 if [ ! -d $HOME/.nvm ]; then
     echo "NVM isn't installed into your home directory"
@@ -136,30 +122,5 @@ if [ $MOCHA_IS_FROM_NVM != 1 ]; then
     exit 1;
 fi
 
-CODE=$(which code)
-
-if [ -z "$CODE" ]; then
-    echo "You don't have Visual Studio Code installed properly"
-    echo "Please reinstall it"
-    exit 1;
-fi
-
-# Check for Docker
-
-if [ -z "$DOCKER" ]; then
-    echo "You don't appear to have docker installed or haven't "
-    echo "enabled the WSL 2 Docker integration"
-    exit 1;
-fi
-
-DOCKER_HELLO_WORLD=$(docker run hello-world)
-DOES_DOCKER_WORK=$(echo $DOCKER_HELLO_WORLD | grep -c "Hello from Docker");
-
-if [ $DOES_DOCKER_WORK != 1 ]; then
-    echo "Docker hello world didn't function properly"
-    echo "Make sure docker is installed and running properly"
-    echo $DOCKER_HELLO_WORLD
-    exit 1;
-fi
-
-echo "Congratulations, you have everything installed properly!"
+echo "Node.JS is OK"
+echo "----------------"
