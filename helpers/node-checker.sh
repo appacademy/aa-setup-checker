@@ -26,61 +26,9 @@ if [ ! -d $HOME/.nvm ]; then
     exit 1;
 fi
 
-if [ $SHELL = '/bin/zsh' ]; then
-    echo "You are running ZSH"
-    if [ ! -f $HOME/.zshrc ]; then
-        echo "You don't have a .zshrc but are running zsh"
-        echo "Please create one and put the NVM startup lines in it"
-        exit 1;
-    fi
-    NVM_LINES="$(cat $HOME/.zshrc | grep -c NVM)"
-    if [ $NVM_LINES != '3' ]; then
-        echo "Couldn't find the NVM configuration lines in your ~/.zshrc"
-        echo "Please add them"
-        exit 1;
-    fi
-fi
-
-if [ $SHELL = '/bin/bash' ]; then
-    echo "You are running Bash";
-    FOUND=0
-    if [ -f $HOME/.bashrc ]; then
-        echo "You have a .bashrc"
-        NVM_LINES="$(cat $HOME/.bashrc | grep -c NVM)"
-        if [ $NVM_LINES = '3' ]; then
-          BASHRC=1
-          echo "Found NVM setup in the .bashrc file"
-          FOUND=1
-        fi
-    fi
-    if [ -f $HOME/.profile ]; then
-        echo "You have a .profile"
-        NVM_LINES="$(cat $HOME/.profile | grep -c NVM)"
-        if [ $NVM_LINES = '3' ]; then
-          PROFILE=1
-          echo "Found NVM setup in the .profile file"
-          FOUND=1
-        fi
-    fi
-    if [ -f $HOME/.bash_profile ]; then
-        echo "You have a .bash_profile"
-        NVM_LINES="$(cat $HOME/.bash_profile | grep -c NVM)"
-        if [ $NVM_LINES = '3' ]; then
-          BASH_PROFILE=1
-          echo "Found NVM setup in the .bash_profile file"
-          FOUND=1
-        fi
-    fi
-    if [ $FOUND = 0 ]; then
-       echo "Couldn't find the NVM setup lines in any of your bash startup files"
-       echo "Please add them to the appropriate startup file"
-       exit 1;
-    fi
-fi
-
 if [ -z "$NVM_DIR" ]; then
-    echo "NVM isn't initialized properly, even though it's in your startup files"
-    echo "Please check which files are running when you start your shell"
+    echo "NVM isn't initialized properly"
+    echo "Please check your startup files for the correct NVM startup lines"
     exit 1;
 fi
 
