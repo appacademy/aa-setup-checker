@@ -25,4 +25,4 @@ if [ $DOES_DOCKER_WORK != 1 ]; then
 fi
 
 c_green "Docker is OK"
-c_bold "---------------"
+f_bold "---------------"

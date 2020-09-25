@@ -84,4 +84,4 @@ if [ $MOCHA_IS_FROM_NVM != 1 ]; then
 fi
 
 c_green "Node.JS is OK"
-c_bold "----------------"
+f_bold "----------------"
