@@ -11,4 +11,6 @@ fi
 mkdir $HOME/.aa-setup-checker
 git clone https://github.com/bartdorsey/aa-setup-checker.git ~/.aa-setup-checker
 
+cd ~/.aa-setup-checker
 bash ~/.aa-setup-checker/check.sh
+cd -
