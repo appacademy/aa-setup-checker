@@ -8,19 +8,19 @@ echo "Ubuntu Version: $UBUNTU_VERSION"
 echo "Shell: $SHELL"
 
 # Check for Docker
-bash ./helpers/node-checker.sh
+. ./helpers/node-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
-bash ./helpers/code-checker.sh
+. ./helpers/code-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
-bash ./helpers/python-checker.sh
+. ./helpers/python-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
-bash ./helpers/docker-checker.sh
+. ./helpers/docker-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
