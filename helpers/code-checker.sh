@@ -1,26 +1,19 @@
 #!/bin/sh
+. ./helpers/colors.sh
 
 CODE=$(which code)
 CODE_VERSION=$(code --version | head -n 1)
 
-echo -n "${F_BOLD}${C_WHITE}"
-echo "Checking VSCode"
-echo "==============="
-echo -n $NO_FORMAT
+f_bold "Checking VSCode"
+f_bold "==============="
 echo "Code Binary: ${CODE}"
 echo "Version: ${CODE_VERSION}"
 
 if [ -z "$CODE" ]; then
-    echo -n $C_RED
-    echo "You don't have Visual Studio Code installed properly"
-    echo "Please reinstall it"
-    echo -n $NO_FORMAT
+    c_red "You don't have Visual Studio Code installed properly"
+    c_red "Please reinstall it"
     exit 1;
 fi
 
-echo -n $C_GREEN
-echo "VSCode is OK"
-echo -n $NO_FORMAT
-echo -n "${F_BOLD}${C_WHITE}"
-echo "---------------"
-echo -n $NO_FORMAT
+c_green "VSCode is OK"
+f_bold "---------------"

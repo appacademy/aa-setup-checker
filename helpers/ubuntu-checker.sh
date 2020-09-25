@@ -1,9 +1,10 @@
 #!/bin/sh
+. ./helpers/colors.sh
 
 UBUNTU_VERSION=$(lsb_release -r -s)
 
-echo "Checking Ubuntu"
-echo "==============="
+f_bold "Checking Ubuntu"
+f_bold "==============="
 echo "Ubuntu Version: $UBUNTU_VERSION"
 echo "Shell: $SHELL"
 
@@ -25,7 +26,7 @@ if [ $? -eq 1 ]; then
     exit 1
 fi
 
-echo "Ubuntu is OK"
-echo "---------------"
+c_green "Ubuntu is OK"
+f_bold "---------------"
 
 echo "Congratulations, you have everything installed properly!"

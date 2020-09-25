@@ -1,7 +1,8 @@
 #!/bin/sh
+. ./helpers/colors.sh
 MACOS_VERSION=$(sw_vers -productVersion)
-echo "Checking macOS"
-echo "=============="
+f_bold "Checking macOS"
+f_bold "=============="
 echo "macOS Version: $MACOS_VERSION"
 ./helpers/node-checker.sh
 if [ $? -eq 1 ]; then
@@ -19,6 +20,6 @@ fi
 if [ $? -eq 1 ]; then
     exit 1
 fi
-echo "macOS OK"
-echo "--------------"
+c_green "macOS OK"
+f_bold "--------------"
 echo "Congratulations, you have everything installed properly!"

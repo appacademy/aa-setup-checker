@@ -1,4 +1,5 @@
 #!/bin/sh
+. ./helpers/colors.sh
 LTS_NODE_VERSION=12
 
 NODE=$(which node)
@@ -10,11 +11,11 @@ NPM_VERSION=$(npm --version)
 MOCHA=$(which mocha)
 MOCHA_VERSION=$(mocha --version)
 MOCHA_IS_FROM_NVM=$(echo $MOCHA | grep -c ".nvm")
+NVM_COMMAND="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash"
+NVM_LINES="export NVM_DIR="$HOME/.nvm"\n[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm"
 
-echo -n "${F_BOLD}${C_WHITE}"
-echo "Checking Node.JS"
-echo "================"
-echo -n $NO_FORMAT
+f_bold "Checking Node.JS"
+f_bold "================"
 echo "Node Binary: ${NODE}"
 echo "Node Version: ${NODE_VERSION}"
 echo "NPM Binary: ${NPM}"
@@ -23,72 +24,64 @@ echo "Mocha Binary: ${MOCHA}"
 echo "Mocha Version: ${MOCHA_VERSION}"
 
 if [ ! -d $HOME/.nvm ]; then
-    echo -n $C_RED
-    echo "NVM isn't installed into your home directory"
-    echo "Please visit the nvm website and install it"
-    echo -n $NO_FORMAT
+    c_red "NVM isn't installed into your home directory"
+    c_red "Please run this command to install it"
+    echo
+    f_bold $NVM_COMMAND
     exit 1;
 fi
 
 if [ -z "$NVM_DIR" ]; then
-    echo -n $C_RED
-    echo "NVM isn't initialized properly"
-    echo "Please check your startup files for the correct NVM startup lines"
-    echo -n $NO_FORMAT
+    c_red "NVM isn't initialized properly"
+    c_red "Please check your startup files for the correct NVM startup lines"
+    echo
+    f_bold $NVM_LINES
     exit 1;
 fi
 
 # Check node and version
 if [ -z "$NODE" ]; then
-    echo -n $C_RED
-    echo "Couldn't find the node bianry in your PATH. Check to make sure NVM"
-    echo "is setup correctly"
-    echo -n $NO_FORMAT
+    c_red "Couldn't find the node bianry in your PATH. Check to make sure NVM"
+    c_red "is setup correctly"
+    echo
+    f_bold "You might want to restart your terminal"
+    f_bold "Or you might need to install node with this command:"
+    echo 
+    f_bold "nvm install --lts"
     exit 1;
 fi
 
 if [ $NODE_IS_LTS != 1 ]; then
-    echo -n $C_RED
-    echo "You aren't running the current LTS version of Node.JS (12)"
-    echo "Please use nvm to update to the lts version"
-    echo "Run 'nvm install --lts'"
-    echo "Followed by 'nvm alias default lts/\*'"
-    echo -n $NO_FORMAT
+    c_red "You aren't running the current LTS version of Node.JS (12)"
+    c_red "Please use nvm to update to the lts version"
+    c_red "Run 'nvm install --lts'"
+    c_red "Followed by 'nvm alias default lts/\*'"
     exit 1;
 fi
 
 if [ $NODE_IS_FROM_NVM != 1 ]; then
-    echo -n $C_RED
-    echo "Your node version isn't coming from NVM"
-    echo "Check to make sure you don't have node installed globally"
-    echo "somewhere in your PATH"
-    echo "Node binary = ${NODE}"
-    echo -n $NO_FORMAT
+    c_red "Your node version isn't coming from NVM"
+    c_red "Check to make sure you don't have node installed globally"
+    c_red "somewhere in your PATH"
+    c_red "Node binary = ${NODE}"
     exit 1;
 fi
 
 # Check for mocha install
 
 if [ -z "$MOCHA" ]; then
-    echo -n $C_RED
-    echo "You don't have mocha installed globally"
-    echo "run 'npm install -g mocha' to install it"
-    echo -n $NO_FORMAT
+    c_red "You don't have mocha installed globally"
+    echo
+    f_bold "run 'npm install -g mocha' to install it"
     exit 1;
 fi
 
 if [ $MOCHA_IS_FROM_NVM != 1 ]; then
-    echo -n $C_RED
-    echo "You have mocha but it's not coming from your nvm node instalation."
-    echo "Please install mocah with 'npm install -g mocah'"
-    echo "Mocha binary = ${MOCHA}"
-    echo -n $NO_FORMAT
+    c_red "You have mocha but it's not coming from your nvm node instalation."
+    c_red "Please install mocah with 'npm install -g mocah'"
+    c_red "Mocha binary = ${MOCHA}"
     exit 1;
 fi
 
-echo $C_GREEN
-echo "Node.JS is OK"
-echo -n $NO_FORMAT
-echo -n "${F_BOLD}${C_WHITE}"
-echo "----------------"
-echo -n $NO_FORMAT
+c_green "Node.JS is OK"
+c_bold "----------------"

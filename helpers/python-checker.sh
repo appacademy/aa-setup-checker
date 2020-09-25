@@ -1,4 +1,5 @@
 #!/bin/sh
+. ./helpers/colors.sh
 
 PYTHON=$(which python3)
 PYTHON_VERSION=$(python3 --version | awk '{print $2}')
@@ -8,70 +9,52 @@ IS_PYTHON_FROM_PYENV=$(echo $PYTHON | grep -c ".pyenv")
 PIPENV=$(which pipenv)
 PIPENV_VERSION=$(pipenv --version)
 
-echo -n "${F_BOLD}${C_WHITE}"
-echo "Checking Python"
-echo "==============="
-echo -n $NO_FORMAT
+f_bold "Checking Python"
+f_bold "==============="
 echo "Python Binary: ${PYTHON}"
 echo "Python Version: ${PYTHON_VERSION}"
 echo "pipenv Binary: ${PIPENV}"
 echo "pipenv Version: ${PIPENV}"
 
 if [ -z $PYTHON ]; then
-    echo -n $C_RED
-    echo "Python is not installed"
-    echo "Please install Python 3.8"
-    echo -n $NO_FORMAT
+    c_red "Python is not installed"
+    c_red "Please install Python 3.8"
     exit 1;
 fi
 
 if [ $IS_PYTHON_FROM_PYENV != 1 ]; then
-    echo -n $C_RED
-    echo "Python wasn't installed with pyenv"
-    echo "Please install pyenv first"
-    echo "and then use it to install python 3.8"
-    echo -n $NO_FORMAT
+    c_red "Python wasn't installed with pyenv"
+    c_red "Please install pyenv first"
+    c_red "and then use it to install python 3.8"
     exit 1;
 fi
 
 if [ $PYTHON_MAJOR_VERSION != 3 ]; then
-    echo -n $C_RED
-    echo "Python is not version 3"
-    echo "please install python 3.8"
-    echo -n $NO_FORMAT
+    c_red "Python is not version 3"
+    c_red "please install python 3.8"
     exit 1;
 fi
 
 if [ $PYTHON_MINOR_VERSION != 8 ]; then
-   echo -n $C_RED
-   echo "Python version is too low"
-   echo "Please install python 3.8"
-   echo -n $NO_FORMAT
-   exit 1;
+    c_red "Python version is too low"
+    c_red "Please install python 3.8"
+    exit 1;
 fi
 
 if [ -z $PIPENV ]; then
-    echo -n $C_RED
-    echo "pipenv not installed"
-    echo "Please install pipenv"
-    echo "Run : 'pip install pipenv'"
-    echo -n $NO_FORMAT
+    c_red "pipenv not installed"
+    c_red "Please install pipenv"
+    c_red "Run : 'pip install pipenv'"
     exit 1;
 fi
 
 if [ ! $PIPENV_VENV_IN_PROJECT ];then
-    echo -n $C_RED
-    echo "PIPENV_VENV_IN_PROJECT not set"
-    echo "Please add this line to your shell startup file:"
+    c_red "PIPENV_VENV_IN_PROJECT not set"
+    c_red "Please add this line to your shell startup file:"
     echo
-    echo "export PIPENV_VENV_IN_PROJECT=1"
-    echo -n $NO_FORMAT
+    c_red "export PIPENV_VENV_IN_PROJECT=1"
     exit 1;
 fi
 
-echo -n $C_GREEN
-echo "Python OK"
-echo -n $NO_FORMAT
-echo -n "${F_BOLD}${C_WHITE}"
-echo "==============="
-echo -n $NO_FORMAT
+c_green "Python OK"
+f_bold "==============="

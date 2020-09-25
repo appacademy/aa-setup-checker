@@ -1,19 +1,16 @@
 #!/bin/sh
+. ./helpers/colors.sh
 DOCKER=$(which docker)
 DOCKER_VERSION=$(docker --version)
 
-echo -n "${F_BOLD}${C_WHITE}"
-echo "Checking Docker"
-echo "==============="
-echo -n $NO_FORMAT
+f_bold "Checking Docker"
+f_bold "==============="
 echo "Docker Binary: ${DOCKER}"
 echo "Docker Version: ${DOCKER_VERSION}"
 
 if [ -z "$DOCKER" ]; then
-    echo -n $C_RED
-    echo "You don't appear to have docker installed or haven't "
-    echo "enabled the WSL 2 Docker integration"
-    echo -n $NO_FORMAT
+    c_red "You don't appear to have docker installed or haven't "
+    c_red "enabled the WSL 2 Docker integration"
     exit 1;
 fi
 
@@ -21,17 +18,11 @@ DOCKER_HELLO_WORLD=$(docker run hello-world)
 DOES_DOCKER_WORK=$(echo $DOCKER_HELLO_WORLD | grep -c "Hello from Docker");
 
 if [ $DOES_DOCKER_WORK != 1 ]; then
-    echo -n $C_RED
-    echo "Docker hello world didn't function properly"
-    echo "Make sure docker is installed and running properly"
-    echo $DOCKER_HELLO_WORLD
-    echo -n $NO_FORMAT
+    c_red "Docker hello world didn't function properly"
+    c_red "Make sure docker is installed and running properly"
+    c_red $DOCKER_HELLO_WORLD
     exit 1;
 fi
 
-echo -n $C_GREEN
-echo "Docker is OK"
-echo -n $NO_FORMAT
-echo -n $F_BOLD
-echo "---------------"
-echo -n $NO_FORMAT
+c_green "Docker is OK"
+c_bold "---------------"
