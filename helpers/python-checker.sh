@@ -6,6 +6,7 @@ PYTHON3=$(which python3)
 PYTHON=$(which python)
 PYENV_GLOBAL=$(pyenv global)
 PYENV_VERSION=$(pyenv --version)
+IS_PYTHON_INSTALLED_IN_PYENV=$(pyenv versions | grep -c "3.8.5")
 PYENV=$(echo $PYENV_VERSION | grep -c "pyenv")
 PYTHON_VERSION=$(python3 --version | awk '{print $2}')
 PYTHON_MAJOR_VERSION=$(echo $PYTHON_VERSION | cut -f 1 -d ".")
@@ -44,6 +45,14 @@ if [ -z $PYTHON ] || [ -z $PYTHON3 ]; then
     echo
     f_bold "pyenv install 3.8.5"
     exit 1;
+fi
+
+if [ $IS_PYTHON_INSTALLED_IN_PYENV != 1 ]; then
+    c_red "You haven't got python 3.8.5 installed"
+    c_red "using pyenv."
+    c_red "Install it with this command"
+    echo
+    f_bold "pyenv install 3.8.5"
 fi
 
 if [ $PYENV_GLOBAL = 'system' ]; then
