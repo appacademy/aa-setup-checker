@@ -13,7 +13,7 @@ if [ $LSB_RELEASE = 1 ]; then
 fi
 
 if [ $IS_MACOS = 1 ]; then
-    . ./helpers/macos-checker.sh
+    ./helpers/macos-checker.sh
     if [ $? -eq 1 ]; then
         exit 1
     fi
@@ -21,7 +21,7 @@ if [ $IS_MACOS = 1 ]; then
 fi
 
 if [ $IS_WINDOWS = 1 ]; then
-    . ./helpers/windows-checker.sh
+    ./helpers/windows-checker.sh
     if [ $? -eq 1 ]; then
         exit 1
     fi
@@ -29,7 +29,7 @@ if [ $IS_WINDOWS = 1 ]; then
 fi
 
 if [ $IS_UBUNTU = 1 ]; then
-    . ./helpers/ubuntu-checker.sh
+    ./helpers/ubuntu-checker.sh
     if [ $? -eq 1 ]; then
         exit 1
     fi
