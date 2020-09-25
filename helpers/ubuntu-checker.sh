@@ -12,15 +12,15 @@ sh ./helpers/node-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
-sh ./helpers/docker-checker.sh
-if [ $? -eq 1 ]; then
-    exit 1
-fi
 sh ./helpers/code-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
 sh ./helpers/python-checker.sh
+if [ $? -eq 1 ]; then
+    exit 1
+fi
+sh ./helpers/docker-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
