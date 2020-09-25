@@ -1,9 +1,9 @@
 #!/bin/sh
-sh ./helpers/wsl2-checker.sh
+bash ./helpers/wsl2-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
-sh ./helpers/ubuntu-checker.sh
+bash ./helpers/ubuntu-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
