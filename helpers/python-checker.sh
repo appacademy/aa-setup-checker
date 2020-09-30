@@ -3,6 +3,9 @@
 . ./helpers/utils.sh
 
 STARTUP_FILE=$(shell_startup_file)
+
+. $STARTUP_FILE
+
 PYTHON3=$(which python3)
 PYTHON=$(which python)
 PYENV_IN_STARTUP_FILES=$(cat $STARTUP_FILE | grep -c "pyenv")
