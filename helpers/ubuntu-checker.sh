@@ -3,30 +3,38 @@
 
 UBUNTU_VERSION=$(lsb_release -r -s)
 
-f_bold "Checking Ubuntu"
-f_bold "==============="
+hr
+title "Checking Ubuntu"
+hr
 echo "Ubuntu Version: $UBUNTU_VERSION"
-echo "Shell: $SHELL"
+
+# Check shell
+echo
+./helpers/shell-checker.sh
+if [ $? -eq 1 ]; then
+  exit 1;
+fi
 
 # Check for Docker
+echo
 ./helpers/node-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
+echo
 ./helpers/code-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
+echo
 ./helpers/python-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
+echo
 ./helpers/docker-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
 
-c_green "Ubuntu is OK"
-f_bold "---------------"
 
-echo "Congratulations, you have everything installed properly!"

@@ -4,8 +4,9 @@
 CODE=$(which code)
 CODE_VERSION=$(code --version | head -n 1)
 
-f_bold "Checking VSCode"
-f_bold "==============="
+hr
+title "Checking VSCode"
+hr
 echo "Code Binary: ${CODE}"
 echo "Version: ${CODE_VERSION}"
 
@@ -16,4 +17,3 @@ if [ -z "$CODE" ]; then
 fi
 
 c_green "VSCode is OK"
-f_bold "---------------"

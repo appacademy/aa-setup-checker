@@ -20,8 +20,9 @@ PIPENV=$(which pipenv)
 PIPENV_VERSION=$(pipenv --version)
 PYENV_LINES="export PATH=\"/Users/echo/.pyenv/bin:\$PATH\"\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\""
 
-f_bold "Checking Python"
-f_bold "==============="
+hr
+title "Checking Python"
+hr
 echo "pyenv version: ${PYENV_VERSION}"
 echo "Python Binary: ${PYTHON}"
 echo "Python3 Binary: ${PYTHON3}"
@@ -106,4 +107,3 @@ if [ ! $PIPENV_VENV_IN_PROJECT ];then
 fi
 
 c_green "Python OK"
-f_bold "==============="

@@ -14,8 +14,9 @@ MOCHA_IS_FROM_NVM=$(echo $MOCHA | grep -c ".nvm")
 NVM_COMMAND="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash"
 NVM_LINES="export NVM_DIR="$HOME/.nvm"\n[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm"
 
-f_bold "Checking Node.JS"
-f_bold "================"
+hr
+title "Checking Node.JS"
+hr
 echo "Node Binary: ${NODE}"
 echo "Node Version: ${NODE_VERSION}"
 echo "NPM Binary: ${NPM}"
@@ -84,4 +85,3 @@ if [ $MOCHA_IS_FROM_NVM != 1 ]; then
 fi
 
 c_green "Node.JS is OK"
-f_bold "----------------"

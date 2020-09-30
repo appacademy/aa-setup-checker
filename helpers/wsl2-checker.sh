@@ -3,8 +3,9 @@
 WSL=$(which wsl.exe)
 WSL_VERSION=$(wsl.exe -l -v | tr -d '\0' | grep Ubuntu | awk '{print $4}' | tr -d '\n\r')
 
-f_bold "Checking WSL"
-f_bold "============"
+hr
+title "Checking WSL"
+hr
 echo "WSL Version: $WSL_VERSION"
 
 if [ -z "$WSL" ]; then
@@ -19,4 +20,3 @@ if [ $WSL_VERSION != "2" ]; then
 fi
 
 c_green "WSL is OK"
-f_bold "-------------"

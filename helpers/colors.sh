@@ -1,9 +1,23 @@
 #!/bin/bash -l
 NO_FORMAT="\033[0m"
 C_GREEN="\033[38;5;10m"
+C_CYAN="\033[36;5;10m"
 C_RED="\033[38;5;196m"
 F_BOLD="\033[1m"
 C_WHITE="\033[38;5;15m"
+
+hr() {
+  f_bold "%0.s―" {1..79}
+  printf "\n"
+}
+
+title() {
+  c_cyan "${@}"
+}
+
+c_cyan() {
+  printf "${C_CYAN}${@}${NO_FORMAT}\n"
+}
 
 c_red() {
   printf "${C_RED}${@}${NO_FORMAT}\n"

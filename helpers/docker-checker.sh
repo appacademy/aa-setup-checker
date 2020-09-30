@@ -3,8 +3,9 @@
 DOCKER=$(which docker)
 DOCKER_VERSION=$(docker --version)
 
-f_bold "Checking Docker"
-f_bold "==============="
+hr
+title "Checking Docker"
+hr
 echo "Docker Binary: ${DOCKER}"
 echo "Docker Version: ${DOCKER_VERSION}"
 
@@ -25,4 +26,3 @@ if [ $DOES_DOCKER_WORK != 1 ]; then
 fi
 
 c_green "Docker is OK"
-f_bold "---------------"
