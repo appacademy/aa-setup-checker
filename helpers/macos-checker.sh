@@ -5,6 +5,10 @@ hr
 title "Checking macOS"
 hr
 echo "macOS Version: $MACOS_VERSION"
+./helpers/shell-checker.sh
+if [ $? -eq 1 ];then
+   exit 1
+fi
 ./helpers/node-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
