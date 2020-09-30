@@ -2,8 +2,10 @@
 . ./helpers/colors.sh
 . ./helpers/utils.sh
 
+STARTUP_FILE=$(shell_startup_file)
 PYTHON3=$(which python3)
 PYTHON=$(which python)
+PYENV_IN_STARTUP_FILES=$(cat $STARTUP_FILE | grep -c "pyenv")
 PYENV_GLOBAL=$(pyenv global)
 PYENV_VERSION=$(pyenv --version)
 IS_PYTHON_INSTALLED_IN_PYENV=$(pyenv versions | grep -c "3.8.5")
@@ -26,7 +28,9 @@ echo "Python Version: ${PYTHON_VERSION}"
 echo "pipenv Binary: ${PIPENV}"
 echo "pipenv Version: ${PIPENV}"
 
-if [ $PYENV != 1 ]; then
+
+
+if [ $PYENV_IN_STARTUP_FILES != 1 ]; then
     c_red "pyenv isn't installed or active"
     c_red "Please install it with this command"
     echo
