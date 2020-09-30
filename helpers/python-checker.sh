@@ -29,16 +29,16 @@ echo "Python Version: ${PYTHON_VERSION}"
 echo "pipenv Binary: ${PIPENV}"
 echo "pipenv Version: ${PIPENV}"
 
-
-
-if [ $PYENV_IN_STARTUP_FILES != 1 ]; then
+if [ ! -d $HOME/.pyenv ]; then
     c_red "pyenv isn't installed or active"
     c_red "Please install it with this command"
     echo
     f_bold "curl https://pyenv.run | bash"
-    echo
-    c_red "Or you can make it active by adding these lines to your"
-    c_red "shell startup file"
+fi
+
+if [ $PYENV_IN_STARTUP_FILES != 1 ]; then
+    c_red "pyenv isn't in your startup files"
+    c_red "Add these lines to your $STARTUP_FILE"
     echo
     f_bold "$PYENV_LINES"
     exit 1;
