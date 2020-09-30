@@ -16,21 +16,21 @@ success() {
 }
 
 if [ $IS_MACOS = 1 ]; then
-    ./helpers/macos-checker.sh
+    $SHELL ./helpers/macos-checker.sh
     if [ $? -eq 1 ]; then
         exit 1
     fi
     success
     exit 0
 elif [ $IS_WINDOWS = 1 ]; then
-    ./helpers/windows-checker.sh
+    $SHELL ./helpers/windows-checker.sh
     if [ $? -eq 1 ]; then
         exit 1
     fi
     success
     exit 0
 elif [ $IS_UBUNTU = 1 ]; then
-    ./helpers/ubuntu-checker.sh
+    $SHELL ./helpers/ubuntu-checker.sh
     if [ $? -eq 1 ]; then
         exit 1
     fi
