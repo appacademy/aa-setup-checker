@@ -7,7 +7,7 @@ This checks to make sure your setup for local development is all correct.
 You can use this curl command to run the script directly from the web.
 
 ```shell
-curl https://raw.githubusercontent.com/appacademy/aa-setup-checker/master/run.sh | bash
+curl -s https://raw.githubusercontent.com/appacademy/aa-setup-checker/master/run.sh | bash
 ```
 
 ## Running it manually
