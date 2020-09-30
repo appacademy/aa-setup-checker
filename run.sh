@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -l
 
 if [ -d $HOME/.aa-setup-checker ]; then
    cd ~/.aa-setup-checker

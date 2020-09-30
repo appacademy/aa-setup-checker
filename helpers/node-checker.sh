@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -l
 . ./helpers/colors.sh
 LTS_NODE_VERSION=12
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -l
 . ./helpers/colors.sh
 MACOS_VERSION=$(sw_vers -productVersion)
 f_bold "Checking macOS"

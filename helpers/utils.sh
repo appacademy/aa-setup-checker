@@ -1,3 +1,5 @@
+#!/bin/bash -l
+
 . ./helpers/colors.sh
 
 shell_startup_file() {

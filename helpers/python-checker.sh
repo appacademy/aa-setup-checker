@@ -1,14 +1,12 @@
-#!/bin/sh
-. ./helpers/colors.sh
-. ./helpers/utils.sh
+#!/bin/bash -l
+source ./helpers/colors.sh
+source ./helpers/utils.sh
 
 STARTUP_FILE=$(shell_startup_file)
 
-. $STARTUP_FILE
-
 PYTHON3=$(which python3)
 PYTHON=$(which python)
-PYENV_IN_STARTUP_FILES=$(cat $STARTUP_FILE | grep -c "pyenv")
+PYENV_IN_STARTUP_FILES=$(cat $STARTUP_FILE | grep -c "pyenv init")
 PYENV_GLOBAL=$(pyenv global)
 PYENV_VERSION=$(pyenv --version)
 IS_PYTHON_INSTALLED_IN_PYENV=$(pyenv versions | grep -c "3.8.5")
@@ -42,7 +40,7 @@ if [ $PYENV_IN_STARTUP_FILES != 1 ]; then
     c_red "Or you can make it active by adding these lines to your"
     c_red "shell startup file"
     echo
-    f_bold $PYENV_LINES
+    f_bold "$PYENV_LINES"
     exit 1;
 fi
 

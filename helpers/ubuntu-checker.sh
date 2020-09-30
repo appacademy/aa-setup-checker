@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -l
 . ./helpers/colors.sh
 
 UBUNTU_VERSION=$(lsb_release -r -s)

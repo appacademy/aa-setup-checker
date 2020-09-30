@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -l
 . ./helpers/colors.sh
 
 CODE=$(which code)
