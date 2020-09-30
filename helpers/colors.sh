@@ -7,8 +7,8 @@ F_BOLD="\033[1m"
 C_WHITE="\033[38;5;15m"
 
 hr() {
-  f_bold "%0.s―" {1..79}
-  printf "\n"
+  s=$(printf "%-80s" "")
+  f_bold "${s// /―}"
 }
 
 title() {
