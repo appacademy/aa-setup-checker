@@ -1,6 +1,6 @@
 #!/bin/bash -l
-. ./helpers/colors.sh
-. ./helpers/utils.sh
+source ./helpers/colors.sh
+source ./helpers/utils.sh
 
 IS_MACOS=$(uname -a | awk '{ print $1 }' | grep -c Darwin)
 IS_WINDOWS=$(which cmd.exe | grep -c -v 'not found')

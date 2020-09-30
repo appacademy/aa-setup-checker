@@ -1,6 +1,4 @@
-#!/bin/bash -l
-
-. ./helpers/colors.sh
+source ./helpers/colors.sh
 
 shell_startup_file() {
     if [ $SHELL = '/bin/bash' ]; then

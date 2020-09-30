@@ -1,5 +1,4 @@
-#!/bin/bash -l
-. ./helpers/colors.sh
+source ./helpers/colors.sh
 
 CODE=$(which code)
 CODE_VERSION=$(code --version | head -n 1)

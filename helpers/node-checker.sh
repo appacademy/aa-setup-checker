@@ -1,5 +1,4 @@
-#!/bin/bash -l
-. ./helpers/colors.sh
+source ./helpers/colors.sh
 LTS_NODE_VERSION=12
 
 NODE=$(which node)

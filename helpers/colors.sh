@@ -1,4 +1,3 @@
-#!/bin/bash -l
 NO_FORMAT="\033[0m"
 C_GREEN="\033[38;5;10m"
 C_CYAN="\033[36;5;10m"

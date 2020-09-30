@@ -1,5 +1,4 @@
-#!/bin/bash -l
-. ./helpers/colors.sh
+source ./helpers/colors.sh
 DOCKER=$(which docker)
 DOCKER_VERSION=$(docker --version)
 

@@ -1,5 +1,4 @@
-#!/bin/bash -l
-. ./helpers/colors.sh
+source ./helpers/colors.sh
 WSL=$(which wsl.exe)
 WSL_VERSION=$(wsl.exe -l -v | tr -d '\0' | grep Ubuntu | awk '{print $4}' | tr -d '\n\r')
 

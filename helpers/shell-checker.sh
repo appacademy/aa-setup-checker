@@ -1,5 +1,3 @@
-#!/bin/bash -l
-
 source ./helpers/colors.sh
 source ./helpers/utils.sh
 hr
