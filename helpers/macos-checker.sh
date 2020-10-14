@@ -16,10 +16,10 @@ $SHELL ./helpers/code-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
 fi
-$SHELL ./helpers/python-checker.sh
-if [ $? -eq 1 ]; then
-    exit 1
-fi
+# $SHELL ./helpers/python-checker.sh
+# if [ $? -eq 1 ]; then
+#     exit 1
+# fi
 $SHELL ./helpers/docker-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
