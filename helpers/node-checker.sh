@@ -80,7 +80,7 @@ fi
 
 if [ $MOCHA_IS_FROM_NVM != 1 ]; then
     c_red "You have mocha but it's not coming from your nvm node instalation."
-    c_red "Please install mocah with 'npm install -g mocah'"
+    c_red "Please install mocha with 'npm install -g mocah'"
     c_red "Mocha binary = ${MOCHA}"
     exit 1;
 fi
