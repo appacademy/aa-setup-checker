@@ -1,6 +1,6 @@
 source ./helpers/utils.sh
-source ./helpers/colors.sh
 source $(shell_startup_file) > /dev/null 2>&1
+source ./helpers/colors.sh
 LTS_NODE_VERSION=12
 
 NODE=$(which node)
