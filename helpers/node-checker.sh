@@ -3,12 +3,12 @@ LTS_NODE_VERSION=12
 
 NODE=$(which node)
 NODE_IS_FROM_NVM=$(echo $NODE | grep -c ".nvm")
-NODE_VERSION=$(node --version)
+NODE_VERSION=$($NODE --version)
 NODE_IS_LTS=$(echo $NODE_VERSION | grep -c $LTS_NODE_VERSION)
 NPM=$(which npm)
-NPM_VERSION=$(npm --version)
+NPM_VERSION=$($NPM --version)
 MOCHA=$(which mocha)
-MOCHA_VERSION=$(mocha --version)
+MOCHA_VERSION=$($MOCHA --version)
 MOCHA_IS_FROM_NVM=$(echo $MOCHA | grep -c ".nvm")
 NVM_COMMAND="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash"
 NVM_LINES="export NVM_DIR="$HOME/.nvm"\n[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm"
@@ -51,19 +51,19 @@ if [ -z "$NODE" ]; then
     exit 1;
 fi
 
-if [ $NODE_IS_LTS != 1 ]; then
-    c_red "You aren't running the current LTS version of Node.JS (12)"
-    c_red "Please use nvm to update to the lts version"
-    c_red "Run 'nvm install --lts'"
-    c_red "Followed by 'nvm alias default lts/\*'"
-    exit 1;
-fi
-
 if [ $NODE_IS_FROM_NVM != 1 ]; then
     c_red "Your node version isn't coming from NVM"
     c_red "Check to make sure you don't have node installed globally"
     c_red "somewhere in your PATH"
     c_red "Node binary = ${NODE}"
+    exit 1;
+fi
+
+if [ $NODE_IS_LTS != 1 ]; then
+    c_red "You aren't running the current LTS version of Node.JS (12)"
+    c_red "Please use nvm to update to the lts version"
+    c_red "Run 'nvm install --lts'"
+    c_red "Followed by 'nvm alias default lts/\*'"
     exit 1;
 fi
 
