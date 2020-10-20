@@ -1,9 +1,9 @@
 NO_FORMAT="\033[0m"
-C_GREEN="\033[38;5;10m"
-C_CYAN="\033[36;5;10m"
-C_RED="\033[38;5;196m"
+C_GREEN="\033[1;92m"
+C_CYAN="\033[1;96m"
+C_RED="\033[1:91m"
 F_BOLD="\033[1m"
-C_WHITE="\033[38;5;15m"
+C_WHITE="\033[1:97m"
 
 hr() {
   s=$(printf "%-80s" "")
