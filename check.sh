@@ -7,6 +7,7 @@ IS_WINDOWS=$(which cmd.exe | grep -c -v 'not found')
 LSB_RELEASE=$(which lsb_release | grep -c -v 'not found')
 if [ $LSB_RELEASE = 1 ]; then
     IS_UBUNTU=$(lsb_release -s -i | grep -c "Ubuntu")
+    IS_DEBIAN=$(lsb_release -s -i | grep -c "Debian")
 fi
 
 success() {
@@ -31,6 +32,13 @@ elif [ $IS_WINDOWS = 1 ]; then
     exit 0
 elif [ $IS_UBUNTU = 1 ]; then
     $SHELL -l ./helpers/ubuntu-checker.sh
+    if [ $? -eq 1 ]; then
+        exit 1
+    fi
+    success
+    exit 0
+elif [ $IS_UBUNTU = 1 ]; then
+    $SHELL -l ./helpers/debian-checker.sh
     if [ $? -eq 1 ]; then
         exit 1
     fi

@@ -1,11 +1,11 @@
 source ./helpers/colors.sh
 
-UBUNTU_VERSION=$(lsb_release -r -s)
+DEBIAN_VERSION=$(lsb_release -r -s)
 
 hr
-title "Checking Ubuntu"
+title "Checking Debian"
 hr
-echo "Ubuntu Version: $UBUNTU_VERSION"
+echo "Debian Version: $DEBIAN_VERSION"
 
 # Check Linux
 echo
