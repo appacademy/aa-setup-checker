@@ -44,6 +44,13 @@ elif [ $IS_DEBIAN = 1 ]; then
     fi
     success
     exit 0
+elif [ -e /etc/fedora-release ]; then
+    $SHELL ./helpers/fedora-checker.sh
+    if [ $? -eq 1 ]; then
+        exit 1
+    fi
+    success
+    exit 0
 else
     c_red "Unknown Operating System, checker script not supported"
 fi
