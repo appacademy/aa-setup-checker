@@ -39,8 +39,8 @@ if [ ! -d $HOME/.pyenv ]; then
     echo
     f_bold "curl https://pyenv.run | bash"
 fi
-
-if [ $PYENV_IN_STARTUP_FILES != 1 ]; then
+echo $PYENV_IN_STARTUP_FILES
+if [ $PYENV_IN_STARTUP_FILES -eq 0 ]; then
     c_red "pyenv isn't in your startup files"
     c_red "Add these lines to your $STARTUP_FILE"
     echo
