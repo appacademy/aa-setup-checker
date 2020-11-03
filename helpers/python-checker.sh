@@ -3,12 +3,16 @@ source ./helpers/utils.sh
 
 STARTUP_FILE=$(shell_startup_file)
 
+WANTED_PYTHON_VERSION=3.8.6
+
+source $STARTUP_FILE
+
 PYTHON3=$(which python3)
 PYTHON=$(which python)
 PYENV_IN_STARTUP_FILES=$(cat $STARTUP_FILE | grep -c "pyenv init")
 PYENV_GLOBAL=$(pyenv global)
 PYENV_VERSION=$(pyenv --version)
-IS_PYTHON_INSTALLED_IN_PYENV=$(pyenv versions | grep -c "3.8.5")
+IS_PYTHON_INSTALLED_IN_PYENV=$(pyenv versions | grep -c "$WANTED_PYTHON_VERSION")
 PYENV=$(echo $PYENV_VERSION | grep -c "pyenv")
 PYTHON_VERSION=$(python3 --version | awk '{print $2}')
 PYTHON_MAJOR_VERSION=$(echo $PYTHON_VERSION | cut -f 1 -d ".")
@@ -17,7 +21,7 @@ IS_PYTHON_FROM_PYENV=$(echo $PYTHON | grep -c ".pyenv")
 IS_PYTHON3_FROM_PYENV=$(echo $PYTHON3 | grep -c ".pyenv")
 PIPENV=$(which pipenv)
 PIPENV_VERSION=$(pipenv --version)
-PYENV_LINES="export PATH=\"/Users/echo/.pyenv/bin:\$PATH\"\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\""
+PYENV_LINES="export PATH=\"$HOME/.pyenv/bin:\$PATH\"\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\""
 
 hr
 title "Checking Python"
@@ -46,18 +50,19 @@ fi
 
 if [ -z $PYTHON ] || [ -z $PYTHON3 ]; then
     c_red "Python3 is not installed"
-    c_red "Please install Python 3.8"
+    c_red "Please install Python $WANTED_PYTHON_VERSION"
     echo
-    f_bold "pyenv install 3.8.5"
+    f_bold "pyenv install $WANTED_PYTHON_VERSION"
     exit 1;
 fi
 
 if [ $IS_PYTHON_INSTALLED_IN_PYENV != 1 ]; then
-    c_red "You haven't got python 3.8.5 installed"
+    c_red "You haven't got python $WANTED_PYTHON_VERSION installed"
     c_red "using pyenv."
     c_red "Install it with this command"
     echo
-    f_bold "pyenv install 3.8.5"
+    f_bold "pyenv install $WANTED_PYTHON_VERSION"
+    exit 1;
 fi
 
 if [ $PYENV_GLOBAL = 'system' ]; then
@@ -65,7 +70,7 @@ if [ $PYENV_GLOBAL = 'system' ]; then
     c_red "Set the pyenv python to be the global"
     c_red "version with this command:"
     echo
-    f_bold "pyenv global 3.8.5"
+    f_bold "pyenv global $WANTED_PYTHON_VERSION"
     exit 1;
 fi
 
@@ -73,25 +78,25 @@ if [ $IS_PYTHON_FROM_PYENV != 1 ] || [ $IS_PYTHON3_FROM_PYENV != 1 ]; then
     c_red "Python wasn't installed with pyenv"
     c_red "Please install it with this command"
     echo
-    f_bold "pyenv install 3.8.5"
+    f_bold "pyenv install $WANTED_PYTHON_VERSION"
     exit 1;
 fi
 
 if [ $PYTHON_MAJOR_VERSION != 3 ]; then
     c_red "Python is not version 3"
-    c_red "please install python 3.8"
+    c_red "please install python $WANTED_PYTHON_VERSION"
     exit 1;
 fi
 
 if [ $PYTHON_MINOR_VERSION != 8 ]; then
     c_red "Python version is too low"
-    c_red "Please install python 3.8"
+    c_red "Please install python $WANTED_PYTHON_VERSION"
     exit 1;
 fi
 
-if [ -z $PIPENV ]; then
+if [ -z $PIPENV_VERSION ]; then
     c_red "pipenv not installed"
-    c_red "Please install pipenv with this command"\
+    c_red "Please install pipenv with this command"
     echo
     f_bold "pip install pipenv"
     exit 1;
