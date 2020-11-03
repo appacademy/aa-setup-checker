@@ -1,7 +1,7 @@
 NO_FORMAT="\033[0m"
 C_GREEN="\033[1;92m"
 C_CYAN="\033[1;96m"
-C_RED="\033[1:91m"
+C_RED="\033[1;91m"
 F_BOLD="\033[1m"
 C_WHITE="\033[1:97m"
 
