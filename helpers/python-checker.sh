@@ -94,7 +94,7 @@ if [ $PYTHON_MINOR_VERSION != 8 ]; then
     exit 1;
 fi
 
-if [ -z $IS_PIPENV_INSTALLED_IN_PYENV ]; then
+if [ $IS_PIPENV_INSTALLED_IN_PYENV -eq 0 ]; then
     c_red "pipenv not installed"
     c_red "Please install pipenv with this command"
     echo
