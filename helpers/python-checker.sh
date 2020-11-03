@@ -18,7 +18,8 @@ PYTHON_MAJOR_VERSION=$(echo $PYTHON_VERSION | cut -f 1 -d ".")
 PYTHON_MINOR_VERSION=$(echo $PYTHON_VERSION | cut -f 2 -d ".")
 IS_PYTHON_FROM_PYENV=$(echo $PYTHON | grep -c ".pyenv")
 IS_PYTHON3_FROM_PYENV=$(echo $PYTHON3 | grep -c ".pyenv")
-PIPENV=$(which pipenv | grep -c "pyenv/shims/pipenv")
+PIPENV=$(which pipenv)
+IS_PIPENV_INSTALLED_IN_PYENV=$(which pipenv | grep -c "pyenv/shims/pipenv")
 PIPENV_VERSION=$(pipenv --version 2> /dev/null)
 PYENV_LINES="export PATH=\"$HOME/.pyenv/bin:\$PATH\"\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\""
 
@@ -93,7 +94,7 @@ if [ $PYTHON_MINOR_VERSION != 8 ]; then
     exit 1;
 fi
 
-if [ -z $PIPENV ]; then
+if [ -z $IS_PIPENV_INSTALLED_IN_PYENV ]; then
     c_red "pipenv not installed"
     c_red "Please install pipenv with this command"
     echo
