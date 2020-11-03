@@ -2,12 +2,12 @@
 source ./helpers/colors.sh
 source ./helpers/utils.sh
 
-IS_MACOS=$(uname -a | awk '{ print $1 }' | grep -c Darwin)
-IS_WINDOWS=$(which cmd.exe | grep -c -v 'not found')
-LSB_RELEASE=$(which lsb_release | grep -c -v 'not found')
+IS_MACOS=$(uname -a | awk '{ print $1 }' | grep -c Darwin 2> /dev/null)
+IS_WINDOWS=$(which cmd.exe | grep -c -v 'not found' 2> /dev/null)
+LSB_RELEASE=$(which lsb_release | grep -c -v 'not found' 2> /dev/null)
 if [ $LSB_RELEASE = 1 ]; then
-    IS_UBUNTU=$(lsb_release -s -i | grep -c "Ubuntu")
-    IS_DEBIAN=$(lsb_release -s -i | grep -c "Debian")
+    IS_UBUNTU=$(lsb_release -s -i | grep -c "Ubuntu" 2> /dev/null)
+    IS_DEBIAN=$(lsb_release -s -i | grep -c "Debian" 2> /dev/null)
 fi
 
 success() {
