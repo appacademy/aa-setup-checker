@@ -19,11 +19,11 @@ if [ $? -eq 1 ]; then
     exit 1
 fi
 echo
-# $SHELL ./helpers/python-checker.sh
-# if [ $? -eq 1 ]; then
-#     exit 1
-# fi
-# echo
+$SHELL ./helpers/python-checker.sh
+if [ $? -eq 1 ]; then
+    exit 1
+fi
+echo
 $SHELL ./helpers/docker-checker.sh
 if [ $? -eq 1 ]; then
     exit 1
