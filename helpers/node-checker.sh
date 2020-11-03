@@ -29,7 +29,7 @@ if [ ! -d $HOME/.nvm ]; then
     c_red "NVM isn't installed into your home directory"
     c_red "Please run this command to install it"
     echo
-    f_bold $NVM_COMMAND
+    f_bold "$NVM_COMMAND"
     exit 1;
 fi
 
