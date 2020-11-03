@@ -1,11 +1,10 @@
-source ./helpers/colors.sh
 source ./helpers/utils.sh
-
 STARTUP_FILE=$(shell_startup_file)
 
 WANTED_PYTHON_VERSION=3.8.6
 
 source $STARTUP_FILE
+source ./helpers/colors.sh
 
 PYTHON3=$(which python3)
 PYTHON=$(which python)
