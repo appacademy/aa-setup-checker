@@ -19,7 +19,7 @@ PYTHON_MINOR_VERSION=$(echo $PYTHON_VERSION | cut -f 2 -d ".")
 IS_PYTHON_FROM_PYENV=$(echo $PYTHON | grep -c ".pyenv")
 IS_PYTHON3_FROM_PYENV=$(echo $PYTHON3 | grep -c ".pyenv")
 PIPENV=$(which pipenv)
-PIPENV_VERSION=$(pipenv --version)
+PIPENV_VERSION=$(pipenv --version 2> /dev/null)
 PYENV_LINES="export PATH=\"$HOME/.pyenv/bin:\$PATH\"\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\""
 
 hr
@@ -30,7 +30,7 @@ echo "Python Binary: ${PYTHON}"
 echo "Python3 Binary: ${PYTHON3}"
 echo "Python Version: ${PYTHON_VERSION}"
 echo "pipenv Binary: ${PIPENV}"
-echo "pipenv Version: ${PIPENV}"
+echo "pipenv Version: ${PIPENV_VERSION}"
 
 if [ ! -d $HOME/.pyenv ]; then
     c_red "pyenv isn't installed or active"

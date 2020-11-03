@@ -1,6 +1,6 @@
 source ./helpers/colors.sh
 DOCKER=$(which docker)
-DOCKER_VERSION=$(docker --version)
+DOCKER_VERSION=$(docker --version 2> /dev/null)
 
 hr
 title "Checking Docker"
@@ -14,7 +14,7 @@ if [ -z "$DOCKER" ]; then
     exit 1;
 fi
 
-DOCKER_HELLO_WORLD=$(docker run hello-world)
+DOCKER_HELLO_WORLD=$(docker run --rm hello-world 2> /dev/null)
 DOES_DOCKER_WORK=$(echo $DOCKER_HELLO_WORLD | grep -c "Hello from Docker");
 
 if [ $DOES_DOCKER_WORK != 1 ]; then
