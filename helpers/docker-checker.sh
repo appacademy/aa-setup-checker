@@ -1,3 +1,5 @@
+source ./helpers/utils.sh
+source $(shell_startup_file) > /dev/null 2>&1
 source ./helpers/colors.sh
 DOCKER=$(which docker)
 DOCKER_VERSION=$(docker --version 2> /dev/null)
