@@ -43,13 +43,13 @@ fi
 
 # Check node and version
 if [ -z "$NODE" ]; then
-    c_red "Couldn't find the node bianry in your PATH. Check to make sure NVM"
+    c_red "Couldn't find the node binary in your PATH. Check to make sure NVM"
     c_red "is setup correctly"
     echo
     f_bold "You might want to restart your terminal"
     f_bold "Or you might need to install node with this command:"
     echo 
-    f_bold "nvm install --lts"
+    f_bold "nvm install $LTS_NODE_VERSION"
     exit 1;
 fi
 
@@ -64,8 +64,8 @@ fi
 if [ $NODE_IS_LTS != 1 ]; then
     c_red "You aren't running the current LTS version of Node.JS (12)"
     c_red "Please use nvm to update to the lts version"
-    c_red "Run 'nvm install --lts'"
-    c_red "Followed by 'nvm alias default lts/\*'"
+    c_red "Run 'nvm install $LTS_NODE_VERSION'"
+    c_red "Followed by 'nvm alias default $LTS_NODE_VERSION"
     exit 1;
 fi
 
@@ -79,8 +79,8 @@ if [ -z "$MOCHA" ]; then
 fi
 
 if [ $MOCHA_IS_FROM_NVM != 1 ]; then
-    c_red "You have mocha but it's not coming from your nvm node instalation."
-    c_red "Please install mocha with 'npm install -g mocah'"
+    c_red "You have mocha but it's not coming from your nvm node installation."
+    c_red "Please install mocha with 'npm install -g mocha'"
     c_red "Mocha binary = ${MOCHA}"
     exit 1;
 fi
