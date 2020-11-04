@@ -14,8 +14,8 @@ fi
 
 if [ $WSL_VERSION != "2" ]; then
     c_red "WSL for Ubuntu is not version 2."
+    c_red "It is highly recommended you use WSL 1"
     c_red "Please run 'wsl --set-version Ubuntu 2' from Powershell"
-    exit 1;
 fi
 
 c_green "WSL is OK"
