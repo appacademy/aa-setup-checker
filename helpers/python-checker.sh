@@ -21,7 +21,7 @@ IS_PYTHON3_FROM_PYENV=$(echo $PYTHON3 | grep -c ".pyenv")
 PIPENV=$(which pipenv)
 IS_PIPENV_INSTALLED_IN_PYENV=$(which pipenv | grep -c "pyenv/shims/pipenv")
 PIPENV_VERSION=$(pipenv --version 2> /dev/null)
-PYENV_LINES="export PATH=\"$HOME/.pyenv/bin:\$PATH\"\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\""
+PYENV_LINES="export PATH=\"\$HOME/.pyenv/bin:\$PATH\"\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\""
 
 hr
 title "Checking Python"
