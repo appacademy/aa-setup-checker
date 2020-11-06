@@ -4,7 +4,7 @@ source ./helpers/colors.sh
 LTS_NODE_VERSION=12
 
 NODE=$(which node)
-NODE_IS_FROM_NVM=$(echo $NODE | grep -c ".nvm")
+NODE_IS_FROM_NVM=$(echo $NODE | grep -c "nvm")
 NODE_VERSION=$($NODE --version)
 NODE_IS_LTS=$(echo $NODE_VERSION | grep -c $LTS_NODE_VERSION)
 NPM=$(which npm)
