@@ -25,7 +25,7 @@ echo "NPM Version: ${NPM_VERSION}"
 echo "Mocha Binary: ${MOCHA}"
 echo "Mocha Version: ${MOCHA_VERSION}"
 
-if [ ! -d $HOME/.nvm ]; then
+if [ ! -d $NVM_DIR ]; then
     c_red "NVM isn't installed into your home directory"
     c_red "Please run this command to install it"
     echo
