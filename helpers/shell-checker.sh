@@ -6,7 +6,7 @@ hr
 c_green "Shell: $SHELL"
 c_green "Shell Startup File: $(shell_startup_file)"
 
-if [ "$SHELL" == "/bin/bash" ]; then
+if [ $SHELL == "/bin/bash" ]; then
     if [ -f ~/.bash_profile ]; then
         c_green "~/.bash_profile exists: true"
     else
