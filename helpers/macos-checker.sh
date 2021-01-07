@@ -1,6 +1,6 @@
 source ./helpers/colors.sh
 MACOS_VERSION=$(sw_vers -productVersion)
-ARCHITECTURE=$(uname -a)
+ARCHITECTURE=$(uname -p)
 CURRENT_ARCH=$(arch)
 hr
 title "Checking macOS"
