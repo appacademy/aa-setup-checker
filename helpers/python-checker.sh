@@ -88,7 +88,7 @@ if [ $PYTHON_MAJOR_VERSION != 3 ]; then
     exit 1;
 fi
 
-if [ $PYTHON_MINOR_VERSION != 8 ]; then
+if [ $PYTHON_MINOR_VERSION != 9 ]; then
     c_red "Python version is too low"
     c_red "Please install python $WANTED_PYTHON_VERSION"
     exit 1;
