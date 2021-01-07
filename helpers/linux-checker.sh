@@ -1,5 +1,8 @@
 source ./helpers/colors.sh
 
+ARCHITECTURE=$(uname -p)
+echo "CPU Architecture: $ARCHITECTURE"
+
 # Check shell
 echo
 $SHELL ./helpers/shell-checker.sh
