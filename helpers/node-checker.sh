@@ -16,11 +16,13 @@ MOCHA_VERSION=$($MOCHA --version)
 MOCHA_IS_FROM_NVM=$(echo $MOCHA | grep -c ".nvm")
 NVM_COMMAND="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.36.0/install.sh | bash"
 NVM_LINES="export NVM_DIR="$HOME/.nvm"\n[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm"
+NODE_ARCH=$($NODE ./helpers/node-arch-check.js)
 
 hr
 title "Checking Node.JS"
 hr
 echo "Node Binary: ${NODE}"
+echo "Node Architecture: ${NODE_ARCH}"
 echo "Node Version: ${NODE_VERSION}"
 echo "NPM Binary: ${NPM}"
 echo "NPM Version: ${NPM_VERSION}"

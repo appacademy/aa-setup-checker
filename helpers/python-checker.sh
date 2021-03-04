@@ -22,11 +22,13 @@ PIPENV=$(which pipenv)
 IS_PIPENV_INSTALLED_IN_PYENV=$(which pipenv | grep -c "pyenv/shims/pipenv")
 PIPENV_VERSION=$(pipenv --version 2> /dev/null)
 PYENV_LINES="export PATH=\"\$HOME/.pyenv/bin:\$PATH\"\neval \"\$(pyenv init -)\"\neval \"\$(pyenv virtualenv-init -)\""
+PYTHON_ARCHITECTURE=$(python ./helpers/python-arch-check.py)
 
 hr
 title "Checking Python"
 hr
 echo "pyenv version: ${PYENV_VERSION}"
+echo "Python Architecture: ${PYTHON_ARCHITECTURE}"
 echo "Python Binary: ${PYTHON}"
 echo "Python3 Binary: ${PYTHON3}"
 echo "Python Version: ${PYTHON_VERSION}"
