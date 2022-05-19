@@ -1,8 +1,8 @@
 source ./helpers/utils.sh
 source $(shell_startup_file) > /dev/null 2>&1
 source ./helpers/colors.sh
-LEGACY_NODE_VERSION=12
-LTS_NODE_VERSION=14
+LEGACY_NODE_VERSION=14
+LTS_NODE_VERSION=16
 
 NODE=$(which node)
 NODE_IS_FROM_NVM=$(echo $NODE | grep -c "nvm")
@@ -52,7 +52,7 @@ if [ -z "$NODE" ]; then
     echo
     f_bold "You might want to restart your terminal"
     f_bold "Or you might need to install node with this command:"
-    echo 
+    echo
     f_bold "nvm install $LTS_NODE_VERSION"
     exit 1;
 fi
@@ -66,18 +66,14 @@ if [ $NODE_IS_FROM_NVM != 1 ]; then
 fi
 
 if [ $NODE_IS_LTS = 1 ]; then
-    c_yellow "You are running the current LTS version of Node.JS ${LTS_NODE_VERSION}"
-    c_yellow "This will probably work but hasn't been tested thoroughly yet."
-    c_yellow "Please use nvm to install version ${LEGACY_NODE_VERSION} instead"
-    c_yellow "Run 'nvm install $LEGACY_NODE_VERSION'"
-    c_yellow "Followed by 'nvm alias default $LEGACY_NODE_VERSION"
+    c_green "You are running the current LTS version of Node.JS ${LTS_NODE_VERSION}"
 fi
 
-if [ $NODE_IS_LTS != 1 ] && [ $NODE_IS_LEGACY != 1 ]; then
-    c_red "You aren't running Node.JS ${LEGACY_NODE_VERSION}"
-    c_red "Please use nvm to update to version ${LEGACY_NODE_VERSION}"
-    c_red "Run 'nvm install $LEGACY_NODE_VERSION'"
-    c_red "Followed by 'nvm alias default $LEGACY_NODE_VERSION"
+if [ $NODE_IS_LTS != 1 ]; then
+    c_red "You aren't running Node.JS ${LTS_NODE_VERSION}"
+    c_red "Please use nvm to update to version ${LTS_NODE_VERSION}"
+    c_red "Run 'nvm install $LTS_NODE_VERSION'"
+    c_red "Followed by 'nvm alias default $LTS_NODE_VERSION"
     exit 1;
 fi
 
