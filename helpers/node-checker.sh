@@ -73,7 +73,7 @@ if [ $NODE_IS_LTS != 1 ]; then
     c_red "You aren't running Node.JS ${LTS_NODE_VERSION}"
     c_red "Please use nvm to update to version ${LTS_NODE_VERSION}"
     c_red "Run 'nvm install $LTS_NODE_VERSION'"
-    c_red "Followed by 'nvm alias default $LTS_NODE_VERSION"
+    c_red "Followed by 'nvm alias default $LTS_NODE_VERSION'"
     exit 1;
 fi
 
